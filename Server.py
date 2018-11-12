@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[4]:
-
-
 import socket, pickle
 
 import os
@@ -42,18 +36,18 @@ def main():
 
     server.bind(address)
     
-    server.listen(3)
-    
-    conn, addr = server.accept()
-    
-    print 'Connected by', addr 
-    
     while True:
         
+        server.listen(3)
+    
+        conn, addr = server.accept()
+
         data = conn.recv(4096)
         
         if not data: break
-            
+        
+        print ('Connected by', addr)
+        
         sorted_data = []
             
         for item in pickle.loads(data):
